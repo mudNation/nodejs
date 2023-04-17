@@ -1,8 +1,13 @@
 const http = require("http"); 
 
 const server = http.createServer((req, res) => {
-    res.writeHead(200, {"Content-Type": "text/plain"})
-    res.end("Samuel has a small Dick!"); 
+    res.writeHead(200, {"Content-Type": "text/json"})
+    res.end(JSON.stringify({
+        name: "Samuel Ikoli",
+        type: "Dick",
+        size: "SMALL"
+    })); 
+    
 })
 
 const PORT = process.env.PORT || 3000; 
