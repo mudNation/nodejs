@@ -1,19 +1,10 @@
-const fs = require("node:fs"); 
+const http = require("node:http"); 
 
-const readableStream = fs.createReadStream(__filename, {encoding: "utf-8"}); 
-// readableStream.close(); 
-
-// readableStream.on("close", ()=>console.log("close log"))
-// setTimeout(() => {
-//     console.log("set time out"); 
-// }, 0);
-// // fs.readFile(__filename, () => console.log("this is readfile"))
-// Promise.resolve().then(() => console.log("promise log"))
-// process.nextTick(() => console.log("next tick log"))
-
-
-// readableStream.read((data) => console.log("data"))
-
-readableStream.on("data", (data)=>{
-    console.log("abc")
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {"content-type": "text/plain"})
+    res.end("Samuel has a small Dick!"); 
 })
+
+const PORT = process.env.PORT || 3000; 
+
+server.listen(PORT, () => console.log(`Server listening on port ${PORT}`))
